@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dashboard</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="wrapper">
+    <h1>Welcome, Learner!</h1>
+    <p id="learnerInfo">Loading your information...</p>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+function logout() {
+    // Simple logout (clear localStorage/token)
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+
+// Example: You can use localStorage to store learner info upon login
+document.addEventListener("DOMContentLoaded", () => {
+    const name = localStorage.getItem('name');
+    const grade = localStorage.getItem('grade');
+    if (name && grade) {
+        document.getElementById('learnerInfo').innerText = `Name: ${name} | Grade: ${grade}`;
+    } else {
+        document.getElementById('learnerInfo').innerText = 'Unable to load user information.';
+    }
+});
+</script>
+</body>
+</html>

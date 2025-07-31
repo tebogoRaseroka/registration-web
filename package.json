@@ -1,0 +1,12 @@
+{
+  "name": "school-website",
+  "version": "1.0.0",
+  "description": "A primary school website for Grade R and returning learners",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {},
+  "author": "Tebogo Raseroka",
+  "license": "ISC"
+}

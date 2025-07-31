@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grade Resources</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<div class="wrapper">
+    <h1>Learning Resources</h1>
+    <p id="gradeContent">Loading resources...</p>
+    <div class="register-link">
+        <p><a href="dashboard.html">Back to Dashboard</a></p>
+    </div>
+</div>
+
+<script>
+// Example: Display grade-specific content
+document.addEventListener("DOMContentLoaded", () => {
+    const grade = localStorage.getItem('grade') || '1';
+    document.getElementById('gradeContent').innerText = `Here are your resources for Grade ${grade}.`;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <form action="#" method="post">
+            <h1>Create an Account</h1>
+
+            <div class="input-box">
+                <input type="text" placeholder="Full Names" required>
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="Surname" required>
+            </div>
+
+            <div class="input-box">
+                <input type="email" placeholder="Email" required>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <button type="submit">Sign Up</button>
+
+            <div class="register-link">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            const response = await fetch('http://localhost:3000/signup', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert('Signup successful! You can now log in.');
+                window.location.href = 'login.html';
+            } else {
+                alert(data.message || 'Signup failed.');
+            }
+        });
+    </script>
+</body>
+</html>
